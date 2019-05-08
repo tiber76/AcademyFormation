@@ -1,7 +1,11 @@
 FROM python:3
 
-ADD __main__.py /
+WORKDIR /usr/src/app
 
-RUN pip install -r requirements.txt
+COPY requirements.txt ./
+
+RUN pip install --no-cache -r ./requirements.txt
+
+COPY . .
 
 CMD [ "python", "./__main__.py" ]
